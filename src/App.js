@@ -1,42 +1,26 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
-import API from './services/api'
+// import API from './services/api'
+import GlobalStyles from './styles/global'
+import Header from './components/Header'
 
 function App() {
-  const [id, setId] = useState([])
-  const [messages, setMessages] = useState([])
-  const [responses, setResponses] = useState([])
-  const [inputs, setInputs] = useState([])
-  const [string, setString] = useState('')
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     await API.post('/conversation/message', {
+  //       context: 'suitability',
+  //     }).then(result => {
+  //       console.log(result.data)
+  //     })
+  //   }
 
-  const [textAnswers, setTextAnswers] = useState([])
-  const answers = {}
-
-  useEffect(() => {
-    const fetchData = async () => {
-      await API.post('/conversation/message', {
-        context: 'suitability',
-      }).then(result => {
-        setId(result.data.id)
-        setMessages(result.data.messages)
-        setResponses(result.data.responses)
-        setInputs(result.data.inputs)
-      })
-    }
-
-    fetchData()
-  }, [])
-
-  console.log(id)
-  console.log(messages)
-  console.log(responses)
-  console.log(inputs)
+  //   fetchData()
+  // }, [])
 
   return (
     <>
-      <header>
-        <h1>Fale com o Warren</h1>
-      </header>
+      <GlobalStyles />
+      <Header>Fale com o Warren</Header>
       <section />
     </>
   )
