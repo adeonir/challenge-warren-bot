@@ -4,14 +4,14 @@ import { lighten } from 'polished'
 import colors from '../../styles/colors'
 
 export const Input = styled.input`
-  border: 0;
-  background: ${colors.white};
+  background: ${colors.light};
   border-radius: 5px;
+  border: 0;
   color: ${colors.black};
+  display: flex;
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   height: 70px;
-  display: flex;
   padding: 0 30px;
 
   &::placeholder {
