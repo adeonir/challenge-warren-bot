@@ -7,14 +7,6 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  *, *::before, *::after {
-    border: 0;
-    box-sizing: inherit;
-    margin: 0;
-    outline: 0;
-    padding: 0;
-  }
-
   body {
     @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap');
     font-family: 'Montserrat', sans-serif;
@@ -24,6 +16,20 @@ const GlobalStyles = createGlobalStyle`
     background: ${colors.light};
     font-size: 100%;
     vertical-align: baseline;
+  }
+
+  #root {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+  }
+
+  *, *::before, *::after {
+    border: 0;
+    box-sizing: inherit;
+    margin: 0;
+    outline: 0;
+    padding: 0;
   }
 `
 
