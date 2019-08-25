@@ -10,5 +10,6 @@ export const Chat = styled.section`
 export const Container = styled.div`
   display: flex;
   flex: 1;
+  flex-direction: column;
   max-width: 960px;
 `

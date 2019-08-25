@@ -1,5 +1,5 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 import * as S from './styled'
 
@@ -11,8 +11,8 @@ const Footer = ({ children }) => {
   )
 }
 
-// Footer.propTypes = {
-//   children: PropTypes.string.isRequired,
-// }
+Footer.propTypes = {
+  children: PropTypes.node.isRequired,
+}
 
 export default Footer
