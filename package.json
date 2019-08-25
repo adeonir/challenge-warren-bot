@@ -33,6 +33,7 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "file-loader": "^4.2.0",
     "prettier": "^1.18.2",
+    "react-svg-loader": "^3.0.3",
     "style-loader": "^1.0.0",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.7",
