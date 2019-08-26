@@ -7,13 +7,10 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body {
-    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap');
-    font-family: 'Montserrat', sans-serif;
-  }
-
   html, body, #root {
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap');
     background: ${colors.light};
+    font-family: 'Montserrat', sans-serif;
     font-size: 100%;
     vertical-align: baseline;
   }
