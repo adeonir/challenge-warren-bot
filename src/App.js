@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react'
+import React, { useState, useEffect, useReducer } from 'react'
 
 import API from './services/api'
 
@@ -47,8 +47,8 @@ function App() {
   const [conversation, dispatch] = useReducer(messagesReducer, [])
 
   useEffect(() => {
-    const fetchData = async () => {
-      await API.post('/conversation/message', {
+    const fetchData = () => {
+      API.post('/conversation/message', {
         context: 'suitability',
       }).then(result => {
         const { messages } = result.data
