@@ -20,7 +20,7 @@ const conversation = [
   },
   {
     owner: 'user',
-    text: ['Meu nome é {{answers.question_name}}'],
+    text: ['Meu nome é Adeonir'],
   },
   {
     owner: 'bot',
