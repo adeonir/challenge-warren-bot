@@ -9,7 +9,8 @@ export const Chat = styled.section`
 
 export const Container = styled.div`
   display: flex;
-  flex: 1;
   flex-direction: column;
+  flex: 1;
+  margin: 0 20px;
   max-width: 960px;
 `
