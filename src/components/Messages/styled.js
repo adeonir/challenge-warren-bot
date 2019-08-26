@@ -16,6 +16,9 @@ export const Messages = styled.div`
       span {
         order: 1;
       }
+      p {
+        text-align: right;
+      }
     `};
 `
 

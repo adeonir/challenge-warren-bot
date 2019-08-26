@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { lighten } from 'polished'
+import media from 'styled-media-query'
 
 import colors from '../../styles/colors'
 
@@ -25,4 +26,10 @@ export const Button = styled.button`
   &:focus {
     background: ${lighten(0.1, colors.primary)};
   }
+
+  ${media.lessThan('600px')`
+    &:last-child {
+      margin-top: 20px;
+    }
+  `}
 `

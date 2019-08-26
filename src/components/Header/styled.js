@@ -13,5 +13,6 @@ export const Header = styled.header`
     color: ${colors.white};
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
+    text-align: center;
   }
 `

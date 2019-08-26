@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { lighten } from 'polished'
+import media from 'styled-media-query'
 
 import colors from '../../styles/colors'
 
@@ -27,4 +28,8 @@ export const Input = styled.input`
   &:focus {
     border: 2px solid ${colors.dark};
   }
+
+  ${media.lessThan('600px')`
+    margin-right: 0;
+  `}
 `

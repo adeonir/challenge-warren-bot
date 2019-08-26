@@ -16,6 +16,7 @@ const GlobalStyles = createGlobalStyle`
     background: ${colors.light};
     font-size: 100%;
     vertical-align: baseline;
+    min-width: 320px;
   }
 
   #root {

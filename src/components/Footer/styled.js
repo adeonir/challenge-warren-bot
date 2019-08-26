@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import media from 'styled-media-query'
 
 import colors from '../../styles/colors'
 
@@ -6,7 +7,7 @@ export const Footer = styled.footer`
   background: ${colors.white};
   display: flex;
   justify-content: center;
-  padding: 20px 0;
+  padding: 20px;
 `
 
 export const Container = styled.div`
@@ -14,6 +15,9 @@ export const Container = styled.div`
   display: flex;
   flex: 1;
   justify-content: space-around;
-  margin: 0 20px;
   max-width: 960px;
+
+  ${media.lessThan('600px')`
+    flex-direction: column;
+  `}
 `
