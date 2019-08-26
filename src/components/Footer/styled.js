@@ -10,9 +10,10 @@ export const Footer = styled.footer`
 `
 
 export const Container = styled.div`
-  max-width: 960px;
+  align-items: center;
   display: flex;
   flex: 1;
   justify-content: space-around;
-  align-items: center;
+  margin: 0 20px;
+  max-width: 960px;
 `
