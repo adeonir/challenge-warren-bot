@@ -28,6 +28,8 @@ export const Text = styled.p`
   align-self: flex-start;
   background: ${colors.white};
   box-shadow: 0px 2px 8px ${rgba(colors.black, 0.15)};
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
   margin-bottom: 15px;
   padding: 15px 20px;
 

@@ -11,6 +11,7 @@ export const Header = styled.header`
 
   h1 {
     color: ${colors.white};
+    font-family: 'Montserrat', sans-serif;
     font-weight: 800;
   }
 `

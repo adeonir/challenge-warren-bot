@@ -10,6 +10,7 @@ export const Button = styled.button`
   color: ${colors.white};
   cursor: pointer;
   display: flex;
+  font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   font-weight: 400;
   height: 50px;
