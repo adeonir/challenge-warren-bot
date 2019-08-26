@@ -24,7 +24,9 @@ const conversation = [
   },
   {
     owner: 'bot',
-    text: ['Prazer, Adeonir'],
+    text: [
+      'Prazer, Adeonir. ^1000 Para ajudar você a ter os melhores rendimentos, ^500 preciso descobrir o seu perfil de investidor, ^500 então farei algumas perguntas rápidas. ^1000',
+    ],
   },
 ]
 
