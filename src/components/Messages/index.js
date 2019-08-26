@@ -23,6 +23,9 @@ const Messages = ({ messages }) => {
 }
 
 Messages.propTypes = {
-  messages: PropTypes.node.isRequired,
+  messages: PropTypes.shape({
+    owner: PropTypes.string,
+    text: PropTypes.array,
+  }).isRequired,
 }
 export default Messages
