@@ -14,7 +14,7 @@ const Messages = ({ messages }) => {
           <S.Text
             key={`text-${index}`.toString()}
             bot={messages.owner === 'bot'}>
-            {text.replace(/\^\d+/gm, '')}
+            {text.replace(/\^\d+/gm, '').replace(/<erase>/gm, '')}
           </S.Text>
         ))}
       </S.MessageWrapper>
