@@ -5,7 +5,7 @@ import API from './services/api'
 import GlobalStyles from './styles/global'
 
 import Header from './components/Header'
-import Footer from './components/Footer'
+import Form from './components/Form'
 import Chat from './components/Chat'
 import Messages from './components/Messages'
 import Input from './components/Input'
@@ -82,7 +82,7 @@ function App() {
     fetchData()
   }, [])
 
-  const handleClick = e => {
+  const handleSubmit = e => {
     e.preventDefault()
 
     const { id } = state
@@ -124,14 +124,14 @@ function App() {
           ))}
       </Chat>
       {state.inputs && (
-        <Footer>
+        <Form onSubmit={handleSubmit}>
           <Input
             type='text'
             placeholder='Digite aqui seu nome'
             onChange={e => setUserText(e.target.value)}
           />
-          <Button onClick={handleClick}>Enviar</Button>
-        </Footer>
+          <Button>Enviar</Button>
+        </Form>
       )}
     </>
   )
