@@ -3,16 +3,17 @@ import PropTypes from 'prop-types'
 
 import * as S from './styled'
 
-const Footer = ({ children }) => {
+const Form = ({ children, onSubmit }) => {
   return (
-    <S.Footer>
+    <S.Form onSubmit={onSubmit}>
       <S.Container>{children}</S.Container>
-    </S.Footer>
+    </S.Form>
   )
 }
 
-Footer.propTypes = {
+Form.propTypes = {
   children: PropTypes.node.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 }
 
-export default Footer
+export default Form

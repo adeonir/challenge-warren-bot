@@ -4,7 +4,7 @@ import media from 'styled-media-query'
 
 import colors from '../../styles/colors'
 
-export const Footer = styled.footer`
+export const Form = styled.form`
   background: ${colors.white};
   box-shadow: 0px 2px 8px ${rgba(colors.black, 0.15)};
   display: flex;
