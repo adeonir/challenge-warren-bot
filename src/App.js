@@ -49,7 +49,7 @@ function App() {
       case 'SEND_USER_DATA':
         return {
           ...state,
-          answers: { ...state.answers, answers: action.payload.answers },
+          answers: action.payload.answers,
           messages: [
             ...state.messages,
             {
@@ -66,6 +66,8 @@ function App() {
   }
 
   const [state, dispatch] = useReducer(stateReducer, initialState)
+
+  console.log(state)
 
   useEffect(() => {
     const fetchData = () => {
@@ -90,9 +92,10 @@ function App() {
     const payload = {
       id,
       answers: {
+        ...state.answers,
         [state.id]: userText,
       },
-      responses: [state.responses[0].replace(/{{.+}}/g, userText)],
+      responses: [userText],
     }
 
     dispatch({
@@ -111,6 +114,7 @@ function App() {
         type: 'LOAD_CHAT',
         payload: result.data,
       })
+      setUserText('')
     })
   }
 
@@ -125,7 +129,7 @@ function App() {
           ))}
       </Chat>
       {state.inputs && (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} inputs={state.inputs}>
           <Input
             type='text'
             placeholder='Digite aqui seu nome'
