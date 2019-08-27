@@ -4,6 +4,7 @@ export const Chat = styled.section`
   display: flex;
   flex: 1;
   justify-content: center;
+  margin-top: 70px;
   padding: 20px 0;
 `
 
