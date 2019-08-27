@@ -8,8 +8,12 @@ export const Header = styled.header`
   background: ${colors.primary};
   box-shadow: 0px 2px 8px ${rgba(colors.black, 0.15)};
   display: flex;
-  padding: 20px 0;
   justify-content: center;
+  left: 0;
+  padding: 20px 0;
+  position: fixed;
+  right: 0;
+  top: 0;
 
   h1 {
     color: ${colors.white};
