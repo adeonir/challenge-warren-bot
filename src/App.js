@@ -34,7 +34,9 @@ function App() {
         return {
           ...state,
           id: action.payload.id,
+          answers: { ...state.answers },
           messages: [
+            ...state.messages,
             {
               owner: 'bot',
               text: action.payload.messages.map(message => message.value),
@@ -47,13 +49,14 @@ function App() {
       case 'SEND_USER_DATA':
         return {
           ...state,
-          answers: {
-            [state.id]: action.payload,
-          },
-          messages: state.messages.concat({
-            owner: 'user',
-            text: state.responses,
-          }),
+          answers: { ...state.answers, answers: action.payload.answers },
+          messages: [
+            ...state.messages,
+            {
+              owner: 'user',
+              text: state.responses,
+            },
+          ],
           buttons: null,
           inputs: null,
         }
@@ -81,26 +84,34 @@ function App() {
 
   const handleClick = e => {
     e.preventDefault()
+
+    const { id } = state
+
+    const payload = {
+      id,
+      answers: {
+        [state.id]: userText,
+      },
+    }
+
     dispatch({
       type: 'SEND_USER_DATA',
-      payload: userText,
+      payload,
     })
 
-    const { id, answers } = state
+    const { answers } = payload
 
     API.post('/conversation/message', {
       context: 'suitability',
       id,
       answers,
     }).then(result => {
-      console.log(result.data)
-      // dispatch({
-      //   type: 'LOAD_CHAT',
-      //   payload: result.data,
-      // })
+      dispatch({
+        type: 'LOAD_CHAT',
+        payload: result.data,
+      })
     })
   }
-  console.log(state)
 
   return (
     <>
