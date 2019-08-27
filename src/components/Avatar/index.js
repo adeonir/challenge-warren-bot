@@ -8,11 +8,13 @@ import IconUser from '../../assets/icon-user.svg'
 
 const Avatar = ({ owner }) => (
   <>
-    {owner === 'bot' ? (
+    {owner === 'bot' && (
       <S.Avatar bot>
         <IconBot />
       </S.Avatar>
-    ) : (
+    )}
+
+    {owner === 'user' && (
       <S.Avatar>
         <IconUser />
       </S.Avatar>
