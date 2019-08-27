@@ -54,7 +54,7 @@ function App() {
             ...state.messages,
             {
               owner: 'user',
-              text: state.responses,
+              text: action.payload.responses,
             },
           ],
           buttons: null,
@@ -92,6 +92,7 @@ function App() {
       answers: {
         [state.id]: userText,
       },
+      responses: [state.responses[0].replace(/{{.+}}/g, userText)],
     }
 
     dispatch({
