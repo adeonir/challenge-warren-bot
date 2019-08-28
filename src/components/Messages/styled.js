@@ -7,8 +7,7 @@ export const Messages = styled.div`
   display: flex;
   flex-direction: row;
   margin-bottom: 30px;
-  ${({ bot }) =>
-    bot ? `justify-content: flex-start` : `justify-content: flex-end`};
+  justify-content: ${({ bot }) => (bot ? `flex-start` : `flex-end`)};
 
   ${({ bot }) =>
     !bot &&
