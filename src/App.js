@@ -28,7 +28,7 @@ function App() {
 
   const stateReducer = (state, action) => {
     switch (action.type) {
-      case 'FIRST_LOAD':
+      case 'API_LOAD':
         return {
           ...state,
           id: action.payload.id,
@@ -71,7 +71,7 @@ function App() {
         context: 'suitability',
       }).then(result => {
         dispatch({
-          type: 'FIRST_LOAD',
+          type: 'API_LOAD',
           payload: result.data,
         })
       })
@@ -108,13 +108,22 @@ function App() {
 
     const { answers } = payload
 
+    if (id === 'finish') {
+      API.post('/suitability/finish', {
+        answers,
+      }).then(result => {
+        console.log(result.data)
+        return result.data
+      })
+    }
+
     API.post('/conversation/message', {
       context: 'suitability',
       id,
       answers,
     }).then(result => {
       dispatch({
-        type: 'FIRST_LOAD',
+        type: 'API_LOAD',
         payload: result.data,
       })
       setUserText('')
@@ -128,11 +137,7 @@ function App() {
       <Chat>
         {state.messages &&
           state.messages.map((message, index) => (
-            <Messages
-              key={`message-${index}`.toString()}
-              messages={message}
-              answers={state.answers}
-            />
+            <Messages key={index} messages={message} answers={state.answers} />
           ))}
       </Chat>
       {(state.inputs || state.buttons) && (
