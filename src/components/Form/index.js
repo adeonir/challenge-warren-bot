@@ -8,18 +8,30 @@ import Button from '../Button'
 
 const Form = ({ onChange, onSubmit, state }) => {
   const { id, inputs, buttons } = state
-  const [placeholder, setPlaceholder] = useState('')
+  const [placeholder, setPlaceholder] = useState({})
 
   useEffect(() => {
     switch (id) {
       case 'question_name':
-        return setPlaceholder('Digite aqui seu nome')
+        return setPlaceholder({
+          text: 'Digite aqui seu nome',
+          type: 'text'
+        })
       case 'question_age':
-        return setPlaceholder('Digite sua idade')
+        return setPlaceholder({
+          text: 'Qual sua idade',
+          type: 'number'
+        })
       case 'question_income':
-          return setPlaceholder('Digite sua renda')
+          return setPlaceholder({
+            text: 'Informe sua renda',
+            type: 'number'
+          })
       case 'question_email':
-          return setPlaceholder('Digite seu email')
+          return setPlaceholder({
+            text: 'Me passe seu email',
+            type: 'email'
+          })
       default:
         return setPlaceholder('')
     }
@@ -31,8 +43,8 @@ const Form = ({ onChange, onSubmit, state }) => {
         {inputs.length > 0 && (
           <>
             <Input
-              type='text'
-              placeholder={placeholder}
+              type={placeholder.type}
+              placeholder={placeholder.text}
               onChange={onChange}
               required
             />
