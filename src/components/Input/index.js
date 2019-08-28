@@ -7,9 +7,14 @@ const Input = ({ type, placeholder, onChange }) => {
   return <S.Input type={type} placeholder={placeholder} onChange={onChange} />
 }
 
+Input.defaultProps = {
+  type: '',
+  placeholder: '',
+}
+
 Input.propTypes = {
-  type: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  placeholder: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 }
 
