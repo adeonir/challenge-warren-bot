@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import * as S from './styled'
@@ -7,16 +7,32 @@ import Input from '../Input'
 import Button from '../Button'
 
 const Form = ({ onChange, onSubmit, state }) => {
-  const { id, buttons } = state
+  const { id, inputs, buttons } = state
+  const [placeholder, setPlaceholder] = useState('')
+
+  useEffect(() => {
+    switch (id) {
+      case 'question_name':
+        return setPlaceholder('Digite aqui seu nome')
+      case 'question_age':
+        return setPlaceholder('Digite sua idade')
+      case 'question_income':
+          return setPlaceholder('Digite sua renda')
+      case 'question_email':
+          return setPlaceholder('Digite seu email')
+      default:
+        return setPlaceholder('')
+    }
+  }, [id])
 
   return (
     <S.Form onSubmit={onSubmit}>
       <S.Container>
-        {id === 'question_name' && (
+        {inputs.length > 0 && (
           <>
             <Input
               type='text'
-              placeholder='Digite aqui seu nome'
+              placeholder={placeholder}
               onChange={onChange}
               required
             />
@@ -24,19 +40,7 @@ const Form = ({ onChange, onSubmit, state }) => {
           </>
         )}
 
-        {id === 'question_age' && (
-          <>
-            <Input
-              type='number'
-              placeholder='Digite sua idade'
-              onChange={onChange}
-              required
-            />
-            <Button>Enviar</Button>
-          </>
-        )}
-
-        {id === 'question_interest' && (
+        {buttons.length > 0 && (
           <>
             {buttons.map(button => (
               <Button
@@ -58,6 +62,7 @@ Form.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   state: PropTypes.shape({
     id: PropTypes.string,
+    inputs: PropTypes.array,
     buttons: PropTypes.array,
   }).isRequired,
 }
