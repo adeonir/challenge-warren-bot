@@ -8,8 +8,6 @@ import Header from './components/Header'
 import Form from './components/Form'
 import Chat from './components/Chat'
 import Messages from './components/Messages'
-import Input from './components/Input'
-import Button from './components/Button'
 
 function App() {
   const initialState = {
@@ -26,11 +24,11 @@ function App() {
     answers: {},
   }
 
-  const [userText, setUserText] = useState('')
+  const [userText, setUserText] = useState({})
 
   const stateReducer = (state, action) => {
     switch (action.type) {
-      case 'LOAD_CHAT':
+      case 'FIRST_LOAD':
         return {
           ...state,
           id: action.payload.id,
@@ -54,7 +52,7 @@ function App() {
             ...state.messages,
             {
               owner: 'user',
-              text: action.payload.responses,
+              text: action.payload.text,
             },
           ],
           buttons: null,
@@ -67,15 +65,13 @@ function App() {
 
   const [state, dispatch] = useReducer(stateReducer, initialState)
 
-  console.log(state)
-
   useEffect(() => {
     const fetchData = () => {
       API.post('/conversation/message', {
         context: 'suitability',
       }).then(result => {
         dispatch({
-          type: 'LOAD_CHAT',
+          type: 'FIRST_LOAD',
           payload: result.data,
         })
       })
@@ -84,18 +80,33 @@ function App() {
     fetchData()
   }, [])
 
-  const handleSubmit = e => {
-    e.preventDefault()
+  const handleChange = event => {
+    setUserText({
+      messageText: event.target.value,
+      answerText: event.target.value,
+    })
+  }
 
+  const handleClick = (event, button) => {
+    event.preventDefault()
+
+    console.log(button)
+
+    if (button) {
+      setUserText({
+        messageText: button.label.title,
+        answerText: button.value,
+      })
+    }
     const { id } = state
 
     const payload = {
       id,
       answers: {
         ...state.answers,
-        [state.id]: userText,
+        [state.id]: userText.answerText,
       },
-      responses: [userText],
+      text: [userText.messageText],
     }
 
     dispatch({
@@ -111,7 +122,7 @@ function App() {
       answers,
     }).then(result => {
       dispatch({
-        type: 'LOAD_CHAT',
+        type: 'FIRST_LOAD',
         payload: result.data,
       })
       setUserText('')
@@ -125,18 +136,15 @@ function App() {
       <Chat>
         {state.messages &&
           state.messages.map((message, index) => (
-            <Messages key={`message-${index}`.toString()} messages={message} />
+            <Messages
+              key={`message-${index}`.toString()}
+              messages={message}
+              answers={state.answers}
+            />
           ))}
       </Chat>
-      {state.inputs && (
-        <Form onSubmit={handleSubmit} inputs={state.inputs}>
-          <Input
-            type='text'
-            placeholder='Digite aqui seu nome'
-            onChange={e => setUserText(e.target.value)}
-          />
-          <Button>Enviar</Button>
-        </Form>
+      {(state.inputs || state.buttons) && (
+        <Form onClick={handleClick} onChange={handleChange} state={state} />
       )}
     </>
   )
