@@ -15,25 +15,28 @@ const Form = ({ onChange, onSubmit, state }) => {
       case 'question_name':
         return setPlaceholder({
           text: 'Digite aqui seu nome',
-          type: 'text'
+          type: 'text',
         })
       case 'question_age':
         return setPlaceholder({
           text: 'Qual sua idade',
-          type: 'number'
+          type: 'number',
         })
       case 'question_income':
-          return setPlaceholder({
-            text: 'Informe sua renda',
-            type: 'number'
-          })
+        return setPlaceholder({
+          text: 'Informe sua renda',
+          type: 'number',
+        })
       case 'question_email':
-          return setPlaceholder({
-            text: 'Me passe seu email',
-            type: 'email'
-          })
+        return setPlaceholder({
+          text: 'Me passe seu email',
+          type: 'email',
+        })
       default:
-        return setPlaceholder('')
+        return setPlaceholder({
+          text: '',
+          type: 'text',
+        })
     }
   }, [id])
 
