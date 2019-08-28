@@ -108,7 +108,7 @@ function App() {
 
     const { answers } = payload
 
-    if (id === 'finish') {
+    if (id === 'final') {
       API.post('/suitability/finish', {
         answers,
       }).then(result => {
