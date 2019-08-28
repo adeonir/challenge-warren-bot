@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import * as S from './styled'
 
 import Input from '../Input'
-import Button from '../Button'
 
 const Form = ({ onChange, onSubmit, state }) => {
   const { id, inputs, buttons } = state
@@ -51,19 +50,19 @@ const Form = ({ onChange, onSubmit, state }) => {
               onChange={onChange}
               required
             />
-            <Button>Enviar</Button>
+            <S.Button>Enviar</S.Button>
           </>
         )}
 
         {buttons.length > 0 && (
           <>
             {buttons.map(button => (
-              <Button
+              <S.Button
                 key={button.value}
                 value={button.value}
                 name={button.value}>
                 {button.label.title}
-              </Button>
+              </S.Button>
             ))}
           </>
         )}
