@@ -6,12 +6,11 @@ import * as S from './styled'
 import Input from '../Input'
 import Button from '../Button'
 
-const Form = ({ onChange, onClick, state }) => {
+const Form = ({ onChange, onSubmit, state }) => {
   const { id, buttons } = state
 
-  console.log(state)
   return (
-    <S.Form>
+    <S.Form onSubmit={onSubmit}>
       <S.Container>
         {id === 'question_name' && (
           <>
@@ -19,8 +18,9 @@ const Form = ({ onChange, onClick, state }) => {
               type='text'
               placeholder='Digite aqui seu nome'
               onChange={onChange}
+              required
             />
-            <Button onClick={onClick}>Enviar</Button>
+            <Button>Enviar</Button>
           </>
         )}
 
@@ -30,8 +30,9 @@ const Form = ({ onChange, onClick, state }) => {
               type='number'
               placeholder='Digite sua idade'
               onChange={onChange}
+              required
             />
-            <Button onClick={onClick}>Enviar</Button>
+            <Button>Enviar</Button>
           </>
         )}
 
@@ -39,9 +40,9 @@ const Form = ({ onChange, onClick, state }) => {
           <>
             {buttons.map(button => (
               <Button
-                onClick={() => onClick(button.value, button.label.title)}
-                key={`button-${button.value}`.toString()}
-                value={button.value}>
+                key={button.value}
+                value={button.value}
+                name={button.value}>
                 {button.label.title}
               </Button>
             ))}
@@ -54,7 +55,7 @@ const Form = ({ onChange, onClick, state }) => {
 
 Form.propTypes = {
   onChange: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   state: PropTypes.shape({
     id: PropTypes.string,
     buttons: PropTypes.array,

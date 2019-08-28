@@ -87,17 +87,9 @@ function App() {
     })
   }
 
-  const handleClick = (event, button) => {
-    event.preventDefault()
+  const handleSubmit = e => {
+    e.preventDefault()
 
-    console.log(button)
-
-    if (button) {
-      setUserText({
-        messageText: button.label.title,
-        answerText: button.value,
-      })
-    }
     const { id } = state
 
     const payload = {
@@ -144,7 +136,7 @@ function App() {
           ))}
       </Chat>
       {(state.inputs || state.buttons) && (
-        <Form onClick={handleClick} onChange={handleChange} state={state} />
+        <Form onSubmit={handleSubmit} onChange={handleChange} state={state} />
       )}
     </>
   )
