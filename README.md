@@ -2,7 +2,7 @@
 
 Esse desafio consiste em bater um _papo_ com o Warren para descobrir o **perfil de investidor**. Essa descoberta é feita através de uma análise do usuário através de perguntas e respostas. Ao final dessa conversa é exibida uma tela com os resultados do perfil de investidor.
 
-A comunicação da aplicação é feita com a API de teste da Warren, pela URL: https://hml-api.oiwarren.com/api/v2/conversation/message.
+A comunicação da aplicação é feita com a API de teste da Warren, pela URL: https://dev-api.oiwarren.com/api/v2/conversation/message.
 
 ### Tecnologias
 
