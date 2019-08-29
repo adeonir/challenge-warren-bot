@@ -5,7 +5,7 @@ import * as S from './styled'
 
 import Input from '../Input'
 
-const Footer = ({ onChange, onClick, state }) => {
+const Footer = ({ onChange, onClick, state, userText }) => {
   const { id, inputs, buttons } = state
   const [placeholder, setPlaceholder] = useState({})
 
@@ -50,7 +50,9 @@ const Footer = ({ onChange, onClick, state }) => {
               onChange={onChange}
               required
             />
-            <S.Button onClick={onClick}>Enviar</S.Button>
+            <S.Button onClick={onClick} disabled={!userText.messageText}>
+              Enviar
+            </S.Button>
           </>
         )}
 
@@ -79,6 +81,9 @@ Footer.propTypes = {
     id: PropTypes.string,
     inputs: PropTypes.array,
     buttons: PropTypes.array,
+  }).isRequired,
+  userText: PropTypes.shape({
+    messageText: PropTypes.string,
   }).isRequired,
 }
 

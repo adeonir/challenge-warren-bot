@@ -9,7 +9,7 @@ export const Footer = styled.footer`
   box-shadow: 0px 2px 8px ${rgba(colors.black, 0.15)};
   display: flex;
   justify-content: center;
-  padding: 20px;
+  padding: ${({ inputs, buttons }) => (inputs || buttons ? `0` : `20px`)};
 `
 
 export const Container = styled.div`
@@ -29,17 +29,16 @@ export const Button = styled.button.attrs({
 })`
   align-items: center;
   background: ${colors.primary};
-  border-radius: 25px;
+  border-radius: 50px;
   color: ${colors.white};
   cursor: pointer;
   display: flex;
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   font-weight: 400;
-  height: 50px;
   justify-content: center;
   letter-spacing: 0.2em;
-  padding: 0 50px;
+  padding: 20px 50px;
   text-align: center;
   text-transform: uppercase;
   transition: all 0.3s ease;
@@ -47,6 +46,11 @@ export const Button = styled.button.attrs({
   &:hover,
   &:focus {
     background: ${lighten(0.1, colors.primary)};
+  }
+
+  &:disabled {
+    background: ${lighten(0.2, colors.primary)};
+    cursor: default;
   }
 
   ${media.lessThan('600px')`
