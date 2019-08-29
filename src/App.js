@@ -5,7 +5,7 @@ import API from './services/api'
 import GlobalStyles from './styles/global'
 
 import Header from './components/Header'
-import Form from './components/Form'
+import Footer from './components/Footer'
 import Chat from './components/Chat'
 import Messages from './components/Messages'
 
@@ -80,19 +80,19 @@ function App() {
     fetchData()
   }, [])
 
-  const handleChange = event => {
+  const handleChange = e => {
     setUserText({
-      messageText: event.target.value,
-      answerText: event.target.value,
+      messageText: e.target.value,
+      answerText: e.target.value,
     })
   }
 
-  const handleSubmit = e => {
-    e.preventDefault()
-
+  const handleClick = e => {
     const { id } = state
 
-    const payload = {
+    let payload = {}
+
+    payload = {
       id,
       answers: {
         ...state.answers,
@@ -101,21 +101,23 @@ function App() {
       text: [userText.messageText],
     }
 
+    if (e.target.name) {
+      payload = {
+        id,
+        answers: {
+          ...state.answers,
+          [state.id]: e.target.value,
+        },
+        text: [e.target.name],
+      }
+    }
+
     dispatch({
       type: 'SEND_USER_DATA',
       payload,
     })
 
     const { answers } = payload
-
-    if (id === 'final') {
-      API.post('/suitability/finish', {
-        answers,
-      }).then(result => {
-        console.log(result.data)
-        return result.data
-      })
-    }
 
     API.post('/conversation/message', {
       context: 'suitability',
@@ -130,6 +132,18 @@ function App() {
     })
   }
 
+  useEffect(() => {
+    const { id, answers } = state
+
+    if (id === 'final') {
+      API.post('/suitability/finish', {
+        answers,
+      }).then(result => {
+        console.log(result.data)
+      })
+    }
+  }, [state])
+
   return (
     <>
       <GlobalStyles />
@@ -141,7 +155,12 @@ function App() {
           ))}
       </Chat>
       {(state.inputs || state.buttons) && (
-        <Form onSubmit={handleSubmit} onChange={handleChange} state={state} />
+        <Footer
+          onClick={handleClick}
+          onChange={handleChange}
+          setUserText={setUserText}
+          state={state}
+        />
       )}
     </>
   )
