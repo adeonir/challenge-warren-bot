@@ -5,7 +5,7 @@ import * as S from './styled'
 
 import Input from '../Input'
 
-const Form = ({ onChange, onSubmit, state }) => {
+const Footer = ({ onChange, onClick, state }) => {
   const { id, inputs, buttons } = state
   const [placeholder, setPlaceholder] = useState({})
 
@@ -40,7 +40,7 @@ const Form = ({ onChange, onSubmit, state }) => {
   }, [id])
 
   return (
-    <S.Form onSubmit={onSubmit}>
+    <S.Footer>
       <S.Container>
         {inputs.length > 0 && (
           <>
@@ -50,7 +50,7 @@ const Form = ({ onChange, onSubmit, state }) => {
               onChange={onChange}
               required
             />
-            <S.Button>Enviar</S.Button>
+            <S.Button onClick={onClick}>Enviar</S.Button>
           </>
         )}
 
@@ -60,20 +60,21 @@ const Form = ({ onChange, onSubmit, state }) => {
               <S.Button
                 key={button.value}
                 value={button.value}
-                name={button.value}>
+                name={button.label.title}
+                onClick={onClick}>
                 {button.label.title}
               </S.Button>
             ))}
           </>
         )}
       </S.Container>
-    </S.Form>
+    </S.Footer>
   )
 }
 
-Form.propTypes = {
+Footer.propTypes = {
   onChange: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   state: PropTypes.shape({
     id: PropTypes.string,
     inputs: PropTypes.array,
@@ -81,4 +82,4 @@ Form.propTypes = {
   }).isRequired,
 }
 
-export default Form
+export default Footer

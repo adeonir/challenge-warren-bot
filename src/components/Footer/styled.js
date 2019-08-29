@@ -4,7 +4,7 @@ import media from 'styled-media-query'
 
 import colors from '../../styles/colors'
 
-export const Form = styled.form`
+export const Footer = styled.footer`
   background: ${colors.white};
   box-shadow: 0px 2px 8px ${rgba(colors.black, 0.15)};
   display: flex;
@@ -25,7 +25,7 @@ export const Container = styled.div`
 `
 
 export const Button = styled.button.attrs({
-  type: 'submit',
+  type: 'button',
 })`
   align-items: center;
   background: ${colors.primary};
