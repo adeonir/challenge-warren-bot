@@ -133,6 +133,16 @@ function App() {
   }
 
   useEffect(() => {
+    setTimeout(() => {
+      const footer = document.querySelector('footer')
+      const input = document.querySelector('footer input')
+
+      footer.scrollIntoView({ behavior: 'smooth' })
+      input.focus()
+    }, 300)
+  }, [!!state.inputs, !!state.buttons])
+
+  useEffect(() => {
     const { id, answers } = state
 
     if (id === 'final') {
