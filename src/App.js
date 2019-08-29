@@ -160,6 +160,7 @@ function App() {
           onChange={handleChange}
           setUserText={setUserText}
           state={state}
+          userText={userText}
         />
       )}
     </>

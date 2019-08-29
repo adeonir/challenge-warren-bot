@@ -74,6 +74,12 @@ const Footer = ({ onChange, onClick, state, userText }) => {
   )
 }
 
+Footer.defaultProps = {
+  userText: PropTypes.shape({
+    messageText: '',
+  }),
+}
+
 Footer.propTypes = {
   onChange: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
@@ -84,7 +90,7 @@ Footer.propTypes = {
   }).isRequired,
   userText: PropTypes.shape({
     messageText: PropTypes.string,
-  }).isRequired,
+  }),
 }
 
 export default Footer
